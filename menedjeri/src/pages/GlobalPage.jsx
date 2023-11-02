@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 const GlobalPage = () => {
   const [inputData, setInputData] = useState('');
   const [timeDate, setTimeDate] = useState('');
+  const [id, setId] = useState('');
   const [text, setText] = useState([]);
   const colonIndex = inputData.indexOf(':');
+  const dataClonId = inputData.indexOf('.');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +25,9 @@ const GlobalPage = () => {
       let newTime = '';
       if (colonIndex !== -1) {
         newTime = inputData.substring(colonIndex - 2, colonIndex + 3);
-        console.log(newTime);
+        if (dataClonId !== -1) {
+          setId(inputData.substring(dataClonId - 2, dataClonId + 8))
+        }
         newTime = '';
       } else if (dayValue === 'ertaga') {
         newTime = '9:00'
@@ -40,6 +44,7 @@ const GlobalPage = () => {
       setInputData('');
     }
   };
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -76,7 +81,7 @@ const GlobalPage = () => {
           <h2 className="card-box-title">Keyn</h2>
           {text.map((item, index) => {
             console.log(item);
-            if (!item.data.includes('bugun') && !item.data.includes('ertaga')) {
+            if (!item.data.includes('bugun') && !item.data.includes('ertaga') && item.data.includes(id)) {
               return <>
                 <input type="checkbox" />
                 <p key={index}>{item.data} {item.time}</p></>
