@@ -1,0 +1,78 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#canvas {
+	position: absolute;
+	z-index: -100;
+	background: #22313f;
+	display: block;
+	width: 100vw;
+	height: 100vh;
+}
+
+.card-container {
+	background-color: #231E39;
+	border-radius: 5px;
+	box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
+	color: #B3B8CD;
+	padding-top: 30px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 350px;
+	max-width: 100%;
+	text-align: center;
+}
+
+.skills {
+	background-color: #1F1A36;
+	text-align: left;
+	padding: 15px;
+	margin-top: 30px;
+	text-align: center;
+}
+
+form {
+	display: flex;
+	gap: 20px;
+}
+
+.skills__input {
+	background-color: rgba(0, 0, 0, 0.3);
+	border: none;
+	border-radius: 15px;
+	color: #B3B8CD;
+	width: 100%;
+	padding: 0 10px !important;
+}
+
+.skills__button {
+	color: #22313f;
+	background-color: chartreuse;
+	padding: 8px;
+	border-radius: 12px;
+	border: 5px solid #22313f;
+}
+
+.skills__time {
+	padding: 5px 0 0 10px;
+	display: flex;
+	text-align: start;
+	font-size: 14px;
+	opacity: 0.6;
+}
+
+.card-box {
+	padding: 0 20px;
+}
+
+
+.card-box-title {
+	text-align: start;
+}
