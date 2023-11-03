@@ -42,13 +42,14 @@ const GlobalPage = () => {
         now.setHours(now.getHours() + 1);
         // newTime = '9:00';
         newTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      } else if (dayValue !== 'ertaga' && dayValue === 'bugun' && inputNewData.includes('.')) {
+      } else if (dayValue !== 'ertaga' && dayValue === 'bugun' && !inputNewData.includes('.')) {
         dayValue = 'bugun';
         const now = new Date();
         now.setMinutes(0);
         now.setSeconds(0);
         now.setHours(now.getHours() + 1);
         newTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        console.log(newTime);
       } else if (dayValue !== 'bugun' && colonIndex === -1 || dayValue !== 'ertaga') {
         newTime = '9:00';
       } else {
