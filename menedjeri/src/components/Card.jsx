@@ -13,8 +13,12 @@ const Card = ({ item, index }) => {
       <div className="todo__box" key={index}>
         <input type="checkbox" onChange={handleCheckboxChange} />
         <p className={isChecked ? 'cheked' : ''}>{item.data}</p>
-        <p className={isChecked ? 'cheked' : ''}>{item.date}</p>
-        <p className={isChecked ? 'cheked' : ''}>{item.time}</p>
+        <div className='todo__box-inner'>
+          {
+            item.date ? (<p className={isChecked ? 'cheked' : ''}>{item.date},</p>) : null
+          }
+          <p className={isChecked ? 'cheked' : ''}>{item.time}</p>
+        </div>
       </div>
     </>
   );

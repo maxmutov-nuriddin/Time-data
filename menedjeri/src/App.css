@@ -77,9 +77,14 @@ form {
 	text-align: start;
 }
 
-.todo__box {
+.todo__box,
+.todo__box-inner {
 	display: flex;
 	justify-content: space-between;
+}
+
+.todo__box-inner {
+	gap: 5px;
 }
 
 .cheked {
