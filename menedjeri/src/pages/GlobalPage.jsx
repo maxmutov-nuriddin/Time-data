@@ -64,12 +64,24 @@ const GlobalPage = () => {
         newTime = inputData.substring(colonIndex - 2, colonIndex + 3)
       }
 
-
       setText([...text, { day: dayValue, data: inputNewData, time: newTime }]);
       setInputData('');
 
     }
   };
+
+
+  text.sort((a, b) => {
+    const nameA = a.time;
+    const nameB = b.time;
+
+    if (nameA < nameB) return -1;
+    if (nameA > nameB) return 1;
+
+    return 0;
+  });
+
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
