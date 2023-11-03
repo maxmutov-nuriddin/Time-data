@@ -8,6 +8,8 @@ const Card = ({ item, index }) => {
     setIsChecked(event.target.checked);
   };
 
+  console.log(item);
+
   return (
     <>
       <div className="todo__box" key={index}>
