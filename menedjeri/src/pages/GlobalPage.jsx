@@ -26,8 +26,13 @@ const GlobalPage = () => {
       if (inputData.indexOf(':') !== -1) {
         delete words[(words.indexOf(inputData.substring(colonIndex - 2, colonIndex + 3)))]
       }
+      let newDate = '';
 
-      const inputNewData = words.join(' ');
+      if (inputData.indexOf('.') !== -1) {
+        newDate = words[(words.indexOf(inputData.substring(dataClonId - 2, dataClonId + 8)))]
+      }
+
+      let inputNewData = words.join(' ');
       let newTime = '';
       if (dayValue !== 'ertaga' && dayValue !== 'bugun' && !inputNewData.includes('.')) {
         dayValue = 'bugun';
@@ -63,13 +68,16 @@ const GlobalPage = () => {
       if (inputData.indexOf(':') !== -1) {
         newTime = inputData.substring(colonIndex - 2, colonIndex + 3)
       }
+      if (inputData.indexOf('.') !== -1) {
+        inputNewData = inputNewData.substring(0, inputNewData.indexOf(newDate)).trim()
+        newDate = inputData.substring(dataClonId - 2, dataClonId + 8)
+      }
 
-      setText([...text, { day: dayValue, data: inputNewData, time: newTime }]);
+      setText([...text, { day: dayValue, data: inputNewData, date: newDate, time: newTime }]);
       setInputData('');
 
     }
   };
-
 
   text.sort((a, b) => {
     const nameA = a.time;
@@ -81,7 +89,7 @@ const GlobalPage = () => {
     return 0;
   });
 
-  
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -99,7 +107,7 @@ const GlobalPage = () => {
         <div className="card-box" >
           <h2 className="card-box-title">Bugun</h2>
           {text.map((item, index) => {
-            if (item.day === 'bugun' || item.data.includes('bugun') && !item.data.includes(id)) {
+            if (item.day === 'bugun' || item.data.includes('bugun') && !item.date.includes(id)) {
               return <>
                 <Card item={item} index={index} key={index} />
               </>
@@ -108,7 +116,7 @@ const GlobalPage = () => {
           })}
           <h2 className="card-box-title">Ertaga</h2>
           {text.map((item, index) => {
-            if (item.day === 'ertaga' || item.data.includes('ertaga') && !item.data.includes(id)) {
+            if (item.day === 'ertaga' || item.data.includes('ertaga') && !item.date.includes(id)) {
               return <>
                 <Card item={item} index={index} key={index} />
               </>
@@ -117,7 +125,7 @@ const GlobalPage = () => {
           })}
           <h2 className="card-box-title">Keyn</h2>
           {text.map((item, index) => {
-            if (item.data.includes('.') && !item.data.includes('bugun') && !item.day.includes('bugun') && !item.data.includes('ertaga') && !item.day.includes('ertaga')) {
+            if (item.date.includes('.') && !item.data.includes('bugun') && !item.day.includes('bugun') && !item.data.includes('ertaga') && !item.day.includes('ertaga')) {
               return <>
                 <Card item={item} index={index} key={index} />
               </>

@@ -8,13 +8,12 @@ const Card = ({ item, index }) => {
     setIsChecked(event.target.checked);
   };
 
-  console.log(item);
-
   return (
     <>
       <div className="todo__box" key={index}>
         <input type="checkbox" onChange={handleCheckboxChange} />
         <p className={isChecked ? 'cheked' : ''}>{item.data}</p>
+        <p className={isChecked ? 'cheked' : ''}>{item.date}</p>
         <p className={isChecked ? 'cheked' : ''}>{item.time}</p>
       </div>
     </>
@@ -22,11 +21,11 @@ const Card = ({ item, index }) => {
 };
 
 Card.propTypes = {
-  item: PropTypes.shape({
-    data: PropTypes.string.isRequired,
-    time: PropTypes.string.isRequired,
-  }).isRequired,
-  index: PropTypes.number.isRequired,
+  item: PropTypes.object,
+  data: PropTypes.string,
+  date: PropTypes.string,
+  time: PropTypes.string,
+  index: PropTypes.number
 };
 
 export default Card;
