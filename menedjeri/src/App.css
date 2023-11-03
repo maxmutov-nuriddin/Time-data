@@ -76,3 +76,13 @@ form {
 .card-box-title {
 	text-align: start;
 }
+
+.todo__box {
+	display: flex;
+	justify-content: space-between;
+}
+
+.cheked {
+	text-decoration: line-through;
+	opacity: 0.5;
+}
